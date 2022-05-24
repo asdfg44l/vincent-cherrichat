@@ -1,0 +1,33 @@
+@import "./basic";
+
+.vh-100 {
+    height: 100vh;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+.c-list {
+    &--devide {
+        .c-list-item {
+            border-top: 1px solid #2ec4b6;
+        }
+        &:last-child {
+            border-bottom: 1px solid #2ec4b6;
+        }
+    }
+    &-item {
+        cursor: pointer;
+        padding: .75rem 1rem;
+        &:hover {
+            background-color: #e9ecef;
+        }
+    }
+}
+
+.box-shadow {
+    &--right {
+        box-shadow: 6px 0 4px -4px #ced4da;
+    }
+}

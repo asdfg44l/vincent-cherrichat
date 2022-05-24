@@ -1,18 +1,34 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-container class="d-flex vh-100">
+    <v-row>
+      <!-- friends-list -->
+      <v-col
+        cols="4"
+        md="3"
+        class="py-0"
+      >
+        <friends-list class="h-100"/>
+      </v-col>
+      <!-- chat-content -->
+      <v-col
+        cols="8"
+        md="9"
+        class="py-0"
+      >
+        <div>hhhhh</div>
+      </v-col>
+    </v-row>
+  </v-container>
+  
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+  import FriendsList from '@/components/FriendsList.vue'
 
-export default {
-  name: 'HomeView',
-  components: {
-    HelloWorld
+  export default {
+    name: 'CherriChat',
+    components: {
+      FriendsList
+    },
   }
-}
 </script>
