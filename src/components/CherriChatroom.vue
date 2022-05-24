@@ -51,10 +51,10 @@
         <!-- chat records -->
         <div class="d-flex flex-column flex-grow-1">
           <!-- chat view > chatitem -->
-          <div class="d-flex flex-column justify-end align-end border-bottom--main flex-grow-1">
+          <div class="d-flex flex-column-reverse align-end flex-grow-1 border-bottom--main h-max overflow-scroll px-3 py-3">
             <p
                 class="chat-item chat-item--main rounded-pill"
-                v-for="item in chatList"
+                v-for="item in reverseList"
                 :key="item.id"
             >
                 {{item.text}}
@@ -103,9 +103,14 @@ export default {
             ]
         }
     },
+    computed: {
+        reverseList() {
+            return [...this.chatList].reverse()
+        }
+    },
     methods: {
         addChatRecords() {
-            if(!this.chatText) return
+            if(!this.chatText.trim()) return
 
             let chatObj = {
                 id: "daffa",

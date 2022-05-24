@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column h-100">
+  <div class="c-layout d-flex flex-column vh-100">
     <HeaderBar />
     <component :is="componentsName" :userId="userId" class="flex-grow-1"/>
   </div>
