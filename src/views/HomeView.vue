@@ -3,11 +3,11 @@
     <v-row :dense="true" no-gutters>
       <!-- friends-list -->
       <v-col cols="4" md="3" class="py-0">
-        <friends-list class="h-100" />
+        <friends-list @user-select="userSelectHandler" class="h-100" />
       </v-col>
       <!-- chat-content -->
       <v-col cols="8" md="9" class="py-0">
-        <cherri-chatroom :userId="userId" />
+        <cherri-chatroom-warp :userId="userId" />
       </v-col>
     </v-row>
   </v-container>
@@ -15,18 +15,23 @@
 
 <script>
 import FriendsList from "@/components/FriendsList.vue";
-import CherriChatroom from "@/components/CherriChatroom.vue";
+import CherriChatroomWarp from "@/components/CherriChatroomWarp.vue";
 
 export default {
   name: "CherriChat",
   components: {
     FriendsList,
-    CherriChatroom,
+    CherriChatroomWarp,
   },
   data: () => {
     return {
       userId: "",
     };
   },
+  methods: {
+    userSelectHandler(userId) {
+      this.userId = userId
+    }
+  }
 };
 </script>

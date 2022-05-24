@@ -1,5 +1,7 @@
 @import "./basic";
 
+$main-theme: #4A90E2;
+
 .vh-100 {
   height: 100vh;
 }
@@ -24,7 +26,7 @@
   &-item {
     cursor: pointer;
     padding: 0.75rem 1rem;
-    &:hover {
+    &--active, &:hover {
       background-color: #e9ecef;
     }
   }
@@ -33,6 +35,9 @@
 .box-shadow {
   &--right {
     box-shadow: 6px 0 4px -4px #ced4da;
+  }
+  &--bottom {
+    box-shadow: 0 4px 5px -3px #ced4da;
   }
   &--none {
     box-shadow: none !important;
@@ -44,10 +49,17 @@
 }
 
 .text-theme {
-    color: #5390d9;
+    color: $main-theme;
+}
+
+.text-gray {
+    color: gray;
 }
 
 //border
+.border-bottom {
+
+}
 .border-left {
     &--white {
         border-left: 1px solid #fff;
@@ -58,7 +70,7 @@
 .nav {
   display: flex;
   align-items: center;
-  background-color: #5390d9;
+  background-color: $main-theme;
   &-content {
     padding: 0.75rem;
   }
@@ -68,7 +80,7 @@
 .btn--active {
   background-color: #fff;
   span {
-    color: #5390d9 !important;
+    color: $main-theme !important;
   }
 }
 
@@ -77,4 +89,28 @@
     position: relative;
     top: 50%;
     transform: translateY(-100%);
+}
+
+//btn
+.btn {
+    display: block;
+}
+
+//icon
+.c-icon {
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &--search {
+      background-image: url("../images/ic_search.png");
+    }
+    &--note {
+      background-image: url("../images/ic_note.png");
+    }
+    &--close-sm {
+        width: 20px;
+        height: 20px;
+        background-image: url("../images/ic_close1.png");
+    }
 }

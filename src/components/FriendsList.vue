@@ -6,7 +6,9 @@
       <div
         v-for="list in friendsList"
         :key="list.id"
+        @click="onClickHandler(list.id)"
         class="c-list-item d-flex align-center"
+        :class="{'c-list-item--active': seletedUserId === list.id}"
       >
         <!-- user-item -->
         <img
@@ -28,6 +30,7 @@ export default {
   name: "FriendsList",
   data: () => {
     return {
+      seletedUserId: "",
       friendsList: [
         {
           id: "dawd",
@@ -47,5 +50,11 @@ export default {
       ],
     };
   },
+  methods: {
+    onClickHandler(userId) {
+      this.seletedUserId = userId
+      this.$emit("user-select", userId)
+    }
+  }
 };
 </script>
