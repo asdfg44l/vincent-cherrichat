@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <v-main>
-      <router-view />
+      <div :class="`theme-${themeColor}`">
+        <router-view />
+      </div>
     </v-main>
   </v-app>
 </template>
@@ -10,8 +12,21 @@
 export default {
   name: "App",
 
-  data: () => ({
-    //
-  }),
+  data() {
+    return {
+      themeColor: "main"
+    }
+  },
+  methods: {
+    onSwitchThemeColor(color) {
+      this.themeColor = color ? "orange" : 'main'
+    }
+  },
+  created() {
+    this.$eventBus.$on("alert:theme", this.onSwitchThemeColor)
+  },
+  beforeDestroy() {
+    this.$eventBus.$off("alert:theme")
+  }
 };
 </script>
