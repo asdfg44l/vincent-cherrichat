@@ -1,19 +1,19 @@
 <template>
   <div class="box-shadow--right">
     <!-- title -->
-    <div class="py-3">{{$t("friends_list")}}(3)</div>
+    <div class="py-3">{{$t("friends_list")}}({{friendsList.length}})</div>
     <div class="c-list c-list--devide">
       <div
         v-for="list in friendsList"
-        :key="list.id"
-        @click="onClickHandler(list.id)"
+        :key="list.userId"
+        @click="onClickHandler(list.userId)"
         class="c-list-item d-flex align-center"
-        :class="{ 'c-list-item--active': seletedUserId === list.id }"
+        :class="{ 'c-list-item--active': seletedUserId === list.userId }"
       >
         <!-- user-item -->
         <img
           class="rounded-circle"
-          src="https://picsum.photos/id/237/80/80"
+          :src="list.avatar"
           alt="user picture"
         />
         <div class="pl-4">
@@ -31,23 +31,7 @@ export default {
   data: () => {
     return {
       seletedUserId: "",
-      friendsList: [
-        {
-          id: "dawd",
-          name: "aaa",
-          description: "hello aaaaaa~",
-        },
-        {
-          id: "wegga",
-          name: "bbb",
-          description: "hello aaaaaa~",
-        },
-        {
-          id: "whhyt",
-          name: "ccc",
-          description: "hello aaaaaa~",
-        },
-      ],
+      friendsList: [],
     };
   },
   methods: {
@@ -55,6 +39,14 @@ export default {
       this.seletedUserId = userId;
       this.$emit("user-select", userId);
     },
+    getFriendList() {
+      this.$http.apiGetUserList()
+        .then(data => this.friendsList = [...data])
+        .catch(e => console.error(e))
+    }
   },
+  created() {
+    this.getFriendList()
+  }
 };
 </script>
