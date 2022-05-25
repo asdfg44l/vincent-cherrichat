@@ -45,7 +45,7 @@
       >
         <template slot="append">
           <div class="d-flex align-center">
-            <p class="mb-0 text-gray">0則相符的訊息</p>
+            <p class="mb-0 text-gray">{{$tc("search_message_outcome", 1)}}</p>
             <v-btn :icon="true" @click="searchObj.text = ''">
               <i class="c-icon c-icon--close-sm"></i>
             </v-btn>
@@ -74,7 +74,7 @@
           v-model="chatText"
           class="form-control"
           name="chat text"
-          placeholder="輸入訊息..."
+          :placeholder="$t('placehoder_common')"
           @keyup.enter="addChatRecords"
         />
         <v-btn :icon="true" @click="addChatRecords">

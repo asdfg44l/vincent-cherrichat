@@ -8,9 +8,9 @@
           name="user note"
           cols="30"
           rows="5"
-          placeholder="輸入訊息..."
+          :placeholder="$t('placehoder_common')"
         ></textarea>
-        <v-btn class="btn--main mt-1 rounded-sm">新增</v-btn>
+        <v-btn class="btn--main mt-1 rounded-sm">{{$t('add_common')}}</v-btn>
       </v-list-item-content>
     </v-list-item>
 

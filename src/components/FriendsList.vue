@@ -1,7 +1,7 @@
 <template>
   <div class="box-shadow--right">
     <!-- title -->
-    <div class="py-3">好友列表(3)</div>
+    <div class="py-3">{{$t("friends_list")}}(3)</div>
     <div class="c-list c-list--devide">
       <div
         v-for="list in friendsList"

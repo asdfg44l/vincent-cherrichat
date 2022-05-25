@@ -10,7 +10,7 @@
           small
           color="white"
           class="rounded-pill font-bold mr-2"
-          :class="{ 'btn--active': selectedLang === 'zh-tw' }"
+          :class="{ 'btn--active': $i18n.locale === 'zh-tw' }"
           @click="onSwitchLanguage('zh-tw')"
         >
           中文
@@ -20,7 +20,7 @@
           small
           color="white"
           class="rounded-pill font-bold"
-          :class="{ 'btn--active': selectedLang === 'en-us' }"
+          :class="{ 'btn--active': $i18n.locale === 'en-us' }"
           @click="onSwitchLanguage('en-us')"
         >
           English
@@ -46,12 +46,12 @@
 export default {
   data: () => {
     return {
-      selectedLang: "zh-tw",
     };
   },
   methods: {
     onSwitchLanguage(lang) {
-      this.selectedLang = lang;
+      this.$i18n.locale = lang //switch language
+      sessionStorage.setItem("cherri-chat-language", lang) //save in storage
     },
   },
 };
