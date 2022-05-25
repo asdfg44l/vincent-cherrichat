@@ -45,14 +45,19 @@
 <script>
 export default {
   data: () => {
-    return {
-    };
+    return {};
   },
   methods: {
     onSwitchLanguage(lang) {
-      this.$i18n.locale = lang //switch language
-      sessionStorage.setItem("cherri-chat-language", lang) //save in storage
+      this.$i18n.locale = lang; //switch language
+      sessionStorage.setItem("cherri-chat-language", lang); //save in storage
     },
+  },
+  created() {
+    this.$http
+      .apiGetUserNote("Jessica")
+      .then((res) => console.log(res))
+      .catch((e) => console.error(e));
   },
 };
 </script>

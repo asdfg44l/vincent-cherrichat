@@ -8,6 +8,10 @@ import vuetify from "./plugins/vuetify";
 //custom scss
 import "@/assets/scss/all.scss";
 
+//api
+import api from "@/api";
+Vue.prototype.$http = api;
+
 Vue.config.productionTip = false;
 
 new Vue({
