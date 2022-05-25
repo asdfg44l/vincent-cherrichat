@@ -13,6 +13,7 @@ let apiAddChatRecord = null
 let apiAddUserNote = null
 
 //DELETE
+let apiDeleteUserNote = null
 
 //Basic setting
 const baseUrl = "mock/";
@@ -52,11 +53,18 @@ apiGetChatRecord = async (chatroomId) => {
     return e;
   }
 };
-apiGetUserNote = async (userId) => {
+apiGetUserNote = async (userId= "Jessica") => {
   try {
     if (!userId) throw new Error("user");
     const res = await instance.get("apiGetUserNote.json");
-    return res.data.filter((item) => item.userId === userId);
+    const originData = res.data.filter((item) => item.userId === userId);
+    let appendData = localStorage.getItem("cherri-append-usernote")
+
+    appendData = appendData 
+      ? JSON.parse(appendData).filter((item) => item.userId === userId) 
+      : []
+
+    return [...originData, ...appendData];
   } catch (e) {
     return e;
   }
@@ -74,6 +82,26 @@ apiAddChatRecord = async (params) => {
 
     localStorage.setItem("cherri-append-chatrecord", JSON.stringify(appendData))
 }
+apiAddUserNote = async (params) => {
+    params.id = uuidv4() //add id
+    let appendData = localStorage.getItem("cherri-append-usernote")
+    appendData = appendData 
+      ? JSON.parse(appendData)
+      : []
+    appendData.push(params)
+
+    localStorage.setItem("cherri-append-usernote", JSON.stringify(appendData))
+}
+
+//DELETE API
+apiDeleteUserNote = async (id) => {
+    let appendData = localStorage.getItem("cherri-append-usernote")
+    appendData = JSON.parse(appendData)
+
+    appendData = appendData.filter(item => item.id !== id)
+
+    localStorage.setItem("cherri-append-usernote", JSON.stringify(appendData))
+}
 
 export default {
   apiGetUserList,
@@ -81,5 +109,6 @@ export default {
   apiGetChatRecord,
   apiGetUserNote,
   apiAddChatRecord,
-  apiAddUserNote
+  apiAddUserNote,
+  apiDeleteUserNote
 };
