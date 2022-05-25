@@ -41,7 +41,7 @@
         v-show="searchObj.isOpen"
         class="w-100 position-absolute px-2 background-transparent"
         v-model="searchObj.text"
-        @blur="onSearchHandler"
+        @keyup.enter="onSearchHandler"
         color="success"
       >
         <template slot="append">
