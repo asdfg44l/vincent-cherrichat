@@ -1,0 +1,50 @@
+//icon
+.c-icon {
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    &--search {
+      background-image: url("../images/ic_search.png");
+    }
+    &--note {
+      background-image: url("../images/ic_note.png");
+    }
+    &--close-sm {
+      width: 20px;
+      height: 20px;
+      background-image: url("../images/ic_close1.png");
+    }
+    &--close-xs {
+      width: 10px;
+      height: 10px;
+      background-image: url("../images/ic_close2.png");
+    }
+    &--sent {
+      background-image: url("../images/ic_sent.png");
+    }
+  }
+
+.c-list {
+    &-item {
+      cursor: pointer;
+      padding: 0.75rem 1rem;
+    }
+}
+
+// nav
+.nav {
+    display: flex;
+    align-items: center;
+    // background-color: $main-theme;
+    &-content {
+      padding: 0.75rem;
+    }
+}
+
+//chat item
+.chat-item {
+    padding: 0.25rem 0.75rem;
+    margin-bottom: 5px !important;
+    color: #fff;
+}

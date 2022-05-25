@@ -58,7 +58,7 @@
     <div class="d-flex flex-column flex-grow-1">
       <!-- chat view > chatitem -->
       <div
-        class="d-flex flex-column-reverse align-end flex-grow-1 border-bottom--main vh-50 overflow-scroll px-3 py-3"
+        class="d-flex flex-column-reverse align-end flex-grow-1 border-bottom--main vh-50 overflow-auto -scroll px-3 py-3"
       >
         <p
           class="chat-item chat-item--main rounded-pill"

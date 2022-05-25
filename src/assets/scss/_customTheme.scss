@@ -75,7 +75,7 @@ $all-themes: (
         }
         .btn {
             &--main {
-                background-color: $main-color
+                background-color: $main-color !important;
             }
             &--active {
                 span {

@@ -1,9 +1,7 @@
 <template>
-  <v-app>
+  <v-app :class="`theme-${themeColor}`">
     <v-main>
-      <div :class="`theme-${themeColor}`">
-        <router-view />
-      </div>
+      <router-view />
     </v-main>
   </v-app>
 </template>
