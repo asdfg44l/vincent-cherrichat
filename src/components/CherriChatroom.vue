@@ -65,7 +65,7 @@
           v-for="item in reverseList"
           :key="item.id"
         >
-          {{ item.text }}
+          {{ item.content }}
         </p>
       </div>
       <!-- chat input -->
@@ -111,21 +111,12 @@ export default {
         avatar: ""
       },
       chatText: "", //新訊息
-      chatList: [
-        {
-          id: "wdgaz1",
-          text: "hello",
-        },
-        {
-          id: "wfwgh123",
-          text: "world",
-        },
-      ],
+      chatList: [], //聊天訊息
     };
   },
   watch: {
     userId() {
-      this.getFriendInfoById()
+      this.getChatRoomData()
     }
   },
   computed: {
@@ -134,7 +125,7 @@ export default {
     },
   },
   methods: {
-    //取得聊天對象訊息
+    //取得聊天對象資訊
     getFriendInfoById() {
       this.$http.apiGetUserById(this.userId)
         .then(data => {
@@ -143,6 +134,21 @@ export default {
         .catch(e => {
           console.error(e)
         })
+    },
+    //取得聊天紀錄
+    getChatRecord() {
+      this.$http.apiGetChatRecord(this.userId)
+        .then(data => {
+          this.chatList = [...data]
+        })
+        .catch(e => {
+          console.error(e)
+        })
+    },
+    //取得聊天室必須資訊
+    getChatRoomData() {
+      this.getFriendInfoById()
+      this.getChatRecord()
     },
     addChatRecords() {
       if (!this.chatText.trim()) return;
@@ -158,7 +164,7 @@ export default {
     },
   },
   created() {
-    this.getFriendInfoById()
+    this.getChatRoomData()
   }
 };
 </script>
