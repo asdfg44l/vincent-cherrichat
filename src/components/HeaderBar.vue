@@ -30,7 +30,7 @@
           </v-btn>
         </div>
         <!-- style switch -->
-        <span class="white--text ml-2 mr-1">Theme: </span>
+        <span class="white--text ml-2 mr-1">{{$t("theme_switch")}}: </span>
         <label class="switch">
           <input type="checkbox" v-model="themeColor" value="orange" />
           <span class="slider round"></span>
