@@ -11,7 +11,7 @@ import "@/assets/scss/all.scss";
 //api
 import api from "@/api";
 Vue.prototype.$http = api;
-Vue.prototype.$eventBus = new Vue()
+Vue.prototype.$eventBus = new Vue();
 
 Vue.config.productionTip = false;
 

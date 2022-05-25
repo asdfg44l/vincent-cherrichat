@@ -1,92 +1,107 @@
 $main: (
-    main-color: #4a90e2,
-    secondary-color: #2ec4b6,
-    shadow: #ced4da,
-    hint-color: #6c757d,
-    list-hover: #e9ecef
+  main-color: #4a90e2,
+  secondary-color: #2ec4b6,
+  shadow: #ced4da,
+  hint-color: #6c757d,
+  list-hover: #e9ecef,
 );
 
 $orange: (
-    main-color: #e36414,
-    secondary-color: #fec89a,
-    shadow: #ced4da,
-    hint-color: #6c757d,
-    list-hover: #e9ecef
+  main-color: #e36414,
+  secondary-color: #fec89a,
+  shadow: #ced4da,
+  hint-color: #6c757d,
+  list-hover: #e9ecef,
 );
 
 $all-themes: (
-    main: $main,
-    orange: $orange
+  main: $main,
+  orange: $orange,
 );
 
 @each $name, $theme in $all-themes {
-    $main-color: map-get($map: $theme, $key: main-color);
-    $secondary-color: map-get($map: $theme, $key: secondary-color);
-    $shadow: map-get($map: $theme, $key: shadow);
-    $hint-color: map-get($map: $theme, $key: hint-color);
-    $list-hover: map-get($map: $theme, $key: list-hover);
+  $main-color: map-get(
+    $map: $theme,
+    $key: main-color,
+  );
+  $secondary-color: map-get(
+    $map: $theme,
+    $key: secondary-color,
+  );
+  $shadow: map-get(
+    $map: $theme,
+    $key: shadow,
+  );
+  $hint-color: map-get(
+    $map: $theme,
+    $key: hint-color,
+  );
+  $list-hover: map-get(
+    $map: $theme,
+    $key: list-hover,
+  );
 
-    .theme-#{$name} {
-        .c-list {
-            &--devide {
-                .c-list-item {
-                    border-top: 1px solid $secondary-color;
-                }
-                &:last-child {
-                    border-bottom: 1px solid $secondary-color;
-                }
-            }
-            &-item {
-                &--active,
-                &:hover {
-                    background-color: #e9ecef;
-                }
-            }
+  .theme-#{$name} {
+    .c-list {
+      &--devide {
+        .c-list-item {
+          border-top: 1px solid $secondary-color;
         }
-        .box-shadow {
-            &--right {
-                box-shadow: 6px 0 4px -4px $shadow;
-            }
-            &--bottom {
-                box-shadow: 0 4px 5px -3px $shadow;
-            }
+        &:last-child {
+          border-bottom: 1px solid $secondary-color;
         }
-        .text-main {
-            color: $main-color;
+      }
+      &-item {
+        &--active,
+        &:hover {
+          background-color: #e9ecef;
         }
-        .text-gray {
-            color: $hint-color;
-        }
-        .border {
-            &--main {
-                border-color: $main-color;
-            }
-            &--second {
-                border-color: $secondary-color;
-            }
-            &-bottom {
-                &--main {
-                    border-bottom: 1px solid $main-color;
-                }
-            }
-        }
-        .nav {
-            background-color: $main-color;
-        }
-        .btn {
-            &--main {
-                background-color: $main-color !important;
-            }
-            &--active {
-                span {
-                    color: $main-color !important;
-                }
-            }
-        }
-        .chat-item {
-            &--main {
-                background-color: $main-color;
-            }
-        }
+      }
     }
+    .box-shadow {
+      &--right {
+        box-shadow: 6px 0 4px -4px $shadow;
+      }
+      &--bottom {
+        box-shadow: 0 4px 5px -3px $shadow;
+      }
+    }
+    .text-main {
+      color: $main-color;
+    }
+    .text-gray {
+      color: $hint-color;
+    }
+    .border {
+      &--main {
+        border-color: $main-color;
+      }
+      &--second {
+        border-color: $secondary-color;
+      }
+      &-bottom {
+        &--main {
+          border-bottom: 1px solid $main-color;
+        }
+      }
+    }
+    .nav {
+      background-color: $main-color;
+    }
+    .btn {
+      &--main {
+        background-color: $main-color !important;
+      }
+      &--active {
+        span {
+          color: $main-color !important;
+        }
+      }
+    }
+    .chat-item {
+      &--main {
+        background-color: $main-color;
+      }
+    }
+  }
 }

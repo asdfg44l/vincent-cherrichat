@@ -12,19 +12,19 @@ export default {
 
   data() {
     return {
-      themeColor: "main"
-    }
+      themeColor: "main",
+    };
   },
   methods: {
     onSwitchThemeColor(color) {
-      this.themeColor = color ? "orange" : 'main'
-    }
+      this.themeColor = color ? "orange" : "main";
+    },
   },
   created() {
-    this.$eventBus.$on("alert:theme", this.onSwitchThemeColor)
+    this.$eventBus.$on("alert:theme", this.onSwitchThemeColor);
   },
   beforeDestroy() {
-    this.$eventBus.$off("alert:theme")
-  }
+    this.$eventBus.$off("alert:theme");
+  },
 };
 </script>

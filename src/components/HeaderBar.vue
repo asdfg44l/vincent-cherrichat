@@ -32,7 +32,7 @@
         <!-- style switch -->
         <span class="white--text ml-2 mr-1">Theme: </span>
         <label class="switch">
-          <input type="checkbox" v-model="themeColor" value="orange">
+          <input type="checkbox" v-model="themeColor" value="orange" />
           <span class="slider round"></span>
         </label>
       </div>
@@ -56,13 +56,13 @@
 export default {
   data: () => {
     return {
-      themeColor: false
+      themeColor: false,
     };
   },
   watch: {
     themeColor() {
-      this.onSwitchThemeColor()
-    }
+      this.onSwitchThemeColor();
+    },
   },
   methods: {
     onSwitchLanguage(lang) {
@@ -70,8 +70,8 @@ export default {
       sessionStorage.setItem("cherri-chat-language", lang); //save in storage
     },
     onSwitchThemeColor() {
-      this.$eventBus.$emit("alert:theme", this.themeColor)
-    }
+      this.$eventBus.$emit("alert:theme", this.themeColor);
+    },
   },
 };
 </script>
