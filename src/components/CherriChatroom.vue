@@ -45,8 +45,8 @@
       >
         <template slot="append">
           <div class="d-flex align-center">
-            <p class="mb-0 text-gray">{{ $tc("search_message_outcome", 1) }}</p>
-            <v-btn :icon="true" @click="searchObj.text = ''">
+            <p class="mb-0 text-gray">{{ $tc("search_message_outcome", searchQuantity) }}</p>
+            <v-btn :icon="true" @click="searchObj.text=''">
               <i class="c-icon c-icon--close-sm"></i>
             </v-btn>
           </div>
@@ -62,10 +62,11 @@
       >
         <p
           class="chat-item chat-item--main rounded-pill"
+          :class="{ 'highlight-allow': allowUseHighlight() }"
           v-for="item in reverseList"
           :key="item.id"
+          v-html="allowUseHighlight(item.highlight) ? item.highlight : item.content"
         >
-          {{ item.content }}
         </p>
       </div>
       <!-- chat input -->
@@ -102,7 +103,7 @@ export default {
     return {
       searchObj: {
         text: "",
-        isOpen: false,
+        isOpen: false
       },
       //聊天對象資訊
       chatroomInfo: {
@@ -118,11 +119,26 @@ export default {
     userId() {
       this.getChatRoomData();
     },
+    'searchObj.text'(value) {
+      if(value == "") {
+        this.getChatRecord()
+      } else {
+        this.onSearchHandler()
+      }
+    }
   },
   computed: {
     reverseList() {
       return [...this.chatList].reverse();
     },
+    searchQuantity() {
+      let target = this.searchObj.text.trim()
+      if(!target) return 0
+
+      let str = this.chatList.map(item => item.highlight).join("")
+      let re = new RegExp(`(${target})`, 'g')
+      return str.match(re, str) ? str.match(re, str).length : 0
+    }
   },
   methods: {
     //取得聊天對象資訊
@@ -141,7 +157,6 @@ export default {
       this.$http
         .apiGetChatRecord(this.userId)
         .then((data) => {
-          console.log(data);
           this.chatList = [...data];
         })
         .catch((e) => {
@@ -167,6 +182,23 @@ export default {
       //clear
       this.chatText = "";
     },
+    //搜尋字句
+    onSearchHandler() {
+      if(!this.searchObj.text.trim()) return
+
+      this.chatList = this.chatList.map(item => {
+        if(item.content.match(this.searchObj.text.trim())) {
+          const target = this.searchObj.text.trim()
+          let re = new RegExp(`(${target})`, 'g')
+          item.highlight = item.content.replace(re, '<span class="highlight">$1</span>')
+        }
+        return item
+      })
+    },
+    //是否套用highlight
+    allowUseHighlight(isHighlight) {
+      return this.searchObj.isOpen && this.searchObj.text.trim() && isHighlight
+    }
   },
   created() {
     this.getChatRoomData();
