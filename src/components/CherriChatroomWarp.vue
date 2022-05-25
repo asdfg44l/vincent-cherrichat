@@ -1,21 +1,21 @@
 <template>
   <div class="c-layout d-flex flex-column vh-100">
     <HeaderBar />
-    <component :is="componentsName" :userId="userId" class="flex-grow-1"/>
+    <component :is="componentsName" :userId="userId" class="flex-grow-1" />
   </div>
 </template>
 
 <script>
-import HeaderBar from "@/components/HeaderBar.vue"
-import CherriChatroom from "@/components/CherriChatroom.vue"
-import DefaultView from "@/components/DefaultView.vue"
+import HeaderBar from "@/components/HeaderBar.vue";
+import CherriChatroom from "@/components/CherriChatroom.vue";
+import DefaultView from "@/components/DefaultView.vue";
 
 export default {
   name: "CherriChatroomWarp",
   components: {
     HeaderBar,
     CherriChatroom,
-    DefaultView
+    DefaultView,
   },
   props: {
     userId: {
@@ -24,8 +24,8 @@ export default {
   },
   computed: {
     componentsName() {
-      return this.userId ? "CherriChatroom" : "DefaultView"
-    }
-  }
+      return this.userId ? "CherriChatroom" : "DefaultView";
+    },
+  },
 };
 </script>

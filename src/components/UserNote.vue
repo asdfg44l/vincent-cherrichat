@@ -1,32 +1,36 @@
 <template>
-    <v-card
-        class="mx-auto"
-        max-width="400"
-        tile
-    >
-        <v-list-item>
-            <v-list-item-content>
-                <v-list-item-title>Single-line item</v-list-item-title>
-            </v-list-item-content>
-        </v-list-item>
+  <v-card class="mx-auto" max-width="350" tile>
+    <!-- user note input -->
+    <v-list-item>
+      <v-list-item-content>
+        <textarea
+          class="form-control border border--main pa-3"
+          name="user note"
+          cols="30"
+          rows="5"
+          placeholder="輸入訊息..."
+        ></textarea>
+        <v-btn class="btn--main mt-1 rounded-sm">新增</v-btn>
+      </v-list-item-content>
+    </v-list-item>
 
-        <v-list-item two-line>
-            <v-list-item-content>
-                <v-list-item-title>Two-line item</v-list-item-title>
-                <v-list-item-subtitle>Secondary text</v-list-item-subtitle>
-            </v-list-item-content>
-        </v-list-item>
+    <div class="px-4 py-2">
+      <v-divider class="border--second"></v-divider>
+    </div>
 
-        <v-list-item three-line>
-            <v-list-item-content>
-                <v-list-item-title>Three-line item</v-list-item-title>
-                <v-list-item-subtitle>
-                Secondary line text Lorem ipsum dolor sit amet,
-                </v-list-item-subtitle>
-                <v-list-item-subtitle>
-                consectetur adipiscing elit.
-                </v-list-item-subtitle>
-            </v-list-item-content>
-        </v-list-item>
-    </v-card>
+    <v-list-item class="pb-3">
+      <v-list-item-content>
+        <div class="border border--second pa-2 position-relative">
+          <v-list-item-title class="text-main"
+            >2022/05/25 09:22</v-list-item-title
+          >
+          <p class="mb-0 mt-2">備忘訊息</p>
+          <!-- delete button -->
+          <v-btn :icon="true" class="position-absolute to-right-top">
+            <i class="c-icon c-icon--close-xs"></i>
+          </v-btn>
+        </div>
+      </v-list-item-content>
+    </v-list-item>
+  </v-card>
 </template>
