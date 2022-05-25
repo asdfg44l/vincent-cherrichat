@@ -8,7 +8,7 @@
         :key="list.id"
         @click="onClickHandler(list.id)"
         class="c-list-item d-flex align-center"
-        :class="{'c-list-item--active': seletedUserId === list.id}"
+        :class="{ 'c-list-item--active': seletedUserId === list.id }"
       >
         <!-- user-item -->
         <img
@@ -52,9 +52,9 @@ export default {
   },
   methods: {
     onClickHandler(userId) {
-      this.seletedUserId = userId
-      this.$emit("user-select", userId)
-    }
-  }
+      this.seletedUserId = userId;
+      this.$emit("user-select", userId);
+    },
+  },
 };
 </script>

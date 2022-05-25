@@ -30,8 +30,8 @@ export default {
   },
   methods: {
     userSelectHandler(userId) {
-      this.userId = userId
-    }
-  }
+      this.userId = userId;
+    },
+  },
 };
 </script>
