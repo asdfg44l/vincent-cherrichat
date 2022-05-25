@@ -45,7 +45,7 @@
       >
         <template slot="append">
           <div class="d-flex align-center">
-            <p class="mb-0 text-gray">{{$tc("search_message_outcome", 1)}}</p>
+            <p class="mb-0 text-gray">{{ $tc("search_message_outcome", 1) }}</p>
             <v-btn :icon="true" @click="searchObj.text = ''">
               <i class="c-icon c-icon--close-sm"></i>
             </v-btn>
@@ -108,7 +108,7 @@ export default {
       chatroomInfo: {
         userId: "",
         name: "",
-        avatar: ""
+        avatar: "",
       },
       chatText: "", //新訊息
       chatList: [], //聊天訊息
@@ -116,8 +116,8 @@ export default {
   },
   watch: {
     userId() {
-      this.getChatRoomData()
-    }
+      this.getChatRoomData();
+    },
   },
   computed: {
     reverseList() {
@@ -127,29 +127,31 @@ export default {
   methods: {
     //取得聊天對象資訊
     getFriendInfoById() {
-      this.$http.apiGetUserById(this.userId)
-        .then(data => {
-          this.chatroomInfo = {...this.chatroomInfo, ...data[0]}
+      this.$http
+        .apiGetUserById(this.userId)
+        .then((data) => {
+          this.chatroomInfo = { ...this.chatroomInfo, ...data[0] };
         })
-        .catch(e => {
-          console.error(e)
-        })
+        .catch((e) => {
+          console.error(e);
+        });
     },
     //取得聊天紀錄
     getChatRecord() {
-      this.$http.apiGetChatRecord(this.userId)
-        .then(data => {
-          console.log(data)
-          this.chatList = [...data]
+      this.$http
+        .apiGetChatRecord(this.userId)
+        .then((data) => {
+          console.log(data);
+          this.chatList = [...data];
         })
-        .catch(e => {
-          console.error(e)
-        })
+        .catch((e) => {
+          console.error(e);
+        });
     },
     //取得聊天室必須資訊
     getChatRoomData() {
-      this.getFriendInfoById()
-      this.getChatRecord()
+      this.getFriendInfoById();
+      this.getChatRecord();
     },
     //新增聊天紀錄
     addChatRecords() {
@@ -158,16 +160,16 @@ export default {
       let chatObj = {
         chatroomId: this.userId,
         content: this.chatText.trim(),
-        date: new Date().getTime()
+        date: new Date().getTime(),
       };
-      this.$http.apiAddChatRecord(chatObj)
-      this.getChatRoomData()
+      this.$http.apiAddChatRecord(chatObj);
+      this.getChatRoomData();
       //clear
       this.chatText = "";
     },
   },
   created() {
-    this.getChatRoomData()
-  }
+    this.getChatRoomData();
+  },
 };
 </script>

@@ -52,6 +52,6 @@ export default {
       this.$i18n.locale = lang; //switch language
       sessionStorage.setItem("cherri-chat-language", lang); //save in storage
     },
-  }
+  },
 };
 </script>

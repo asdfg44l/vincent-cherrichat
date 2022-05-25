@@ -7,7 +7,7 @@
         src="../assets/images/img_default.png"
         alt="default image"
       />
-      <p class="text-h5 text-main mt-2">{{$t('welcome_phrase')}}</p>
+      <p class="text-h5 text-main mt-2">{{ $t("welcome_phrase") }}</p>
     </div>
   </div>
 </template>

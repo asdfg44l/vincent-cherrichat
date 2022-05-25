@@ -1,7 +1,7 @@
 <template>
   <div class="box-shadow--right">
     <!-- title -->
-    <div class="py-3">{{$t("friends_list")}}({{friendsList.length}})</div>
+    <div class="py-3">{{ $t("friends_list") }}({{ friendsList.length }})</div>
     <div class="c-list c-list--devide">
       <div
         v-for="list in friendsList"
@@ -11,11 +11,7 @@
         :class="{ 'c-list-item--active': seletedUserId === list.userId }"
       >
         <!-- user-item -->
-        <img
-          class="rounded-circle"
-          :src="list.avatar"
-          alt="user picture"
-        />
+        <img class="rounded-circle" :src="list.avatar" alt="user picture" />
         <div class="pl-4">
           <p class="mb-0">{{ list.name }}</p>
           <p class="mb-0">{{ list.description }}</p>
@@ -40,13 +36,14 @@ export default {
       this.$emit("user-select", userId);
     },
     getFriendList() {
-      this.$http.apiGetUserList()
-        .then(data => this.friendsList = [...data])
-        .catch(e => console.error(e))
-    }
+      this.$http
+        .apiGetUserList()
+        .then((data) => (this.friendsList = [...data]))
+        .catch((e) => console.error(e));
+    },
   },
   created() {
-    this.getFriendList()
-  }
+    this.getFriendList();
+  },
 };
 </script>
