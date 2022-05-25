@@ -8,10 +8,10 @@
       <div class="d-flex align-center">
         <img
           class="rounded-circle"
-          src="https://picsum.photos/id/237/60/60"
+          :src="chatroomInfo.avatar"
           alt="user picture"
         />
-        <p class="text-h6 pl-3 mb-0">{{ userId }}</p>
+        <p class="text-h6 pl-3 mb-0">{{ chatroomInfo.name }}</p>
       </div>
       <!-- append function -->
       <div class="d-flex">
@@ -104,7 +104,13 @@ export default {
         text: "",
         isOpen: false,
       },
-      chatText: "",
+      //聊天對象資訊
+      chatroomInfo: {
+        userId: "",
+        name: "",
+        avatar: ""
+      },
+      chatText: "", //新訊息
       chatList: [
         {
           id: "wdgaz1",
@@ -117,12 +123,27 @@ export default {
       ],
     };
   },
+  watch: {
+    userId() {
+      this.getFriendInfoById()
+    }
+  },
   computed: {
     reverseList() {
       return [...this.chatList].reverse();
     },
   },
   methods: {
+    //取得聊天對象訊息
+    getFriendInfoById() {
+      this.$http.apiGetUserById(this.userId)
+        .then(data => {
+          this.chatroomInfo = {...this.chatroomInfo, ...data[0]}
+        })
+        .catch(e => {
+          console.error(e)
+        })
+    },
     addChatRecords() {
       if (!this.chatText.trim()) return;
 
@@ -136,5 +157,8 @@ export default {
       this.chatText = "";
     },
   },
+  created() {
+    this.getFriendInfoById()
+  }
 };
 </script>

@@ -3,6 +3,7 @@ import axios from "axios";
 // API Function
 
 let apiGetUserList = null;
+let apiGetUserById = null;
 let apiGetChatRecord = null;
 let apiGetUserNote = null;
 
@@ -19,6 +20,15 @@ apiGetUserList = async () => {
     return e;
   }
 };
+
+apiGetUserById = async(userId) => {
+    try {
+      const res = await instance.get("apiGetUserList.json")
+      return res.data.filter(item => item.userId === userId)
+    } catch(e) {
+      return e
+    }
+}
 
 apiGetChatRecord = async (chatroomId) => {
   try {
@@ -41,7 +51,8 @@ apiGetUserNote = async (userId) => {
 };
 
 export default {
-  apiGetChatRecord,
   apiGetUserList,
+  apiGetUserById,
+  apiGetChatRecord,
   apiGetUserNote,
 };
