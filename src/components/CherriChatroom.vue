@@ -39,8 +39,9 @@
     <div class="position-relative">
       <v-text-field
         v-show="searchObj.isOpen"
-        class="w-100 position-absolute px-2"
+        class="w-100 position-absolute px-2 background-transparent"
         v-model="searchObj.text"
+        @blur="onSearchHandler"
         color="success"
       >
         <template slot="append">
@@ -122,8 +123,6 @@ export default {
     'searchObj.text'(value) {
       if(value == "") {
         this.getChatRecord()
-      } else {
-        this.onSearchHandler()
       }
     }
   },

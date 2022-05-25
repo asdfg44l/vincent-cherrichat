@@ -97,3 +97,8 @@
   background-color: yellow !important;
   color: #000 !important;
 }
+
+//background
+.background-transparent {
+  background-color: rgba($color: #fff, $alpha: 0.8);
+}
