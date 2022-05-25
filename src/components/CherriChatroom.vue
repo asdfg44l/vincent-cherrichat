@@ -139,6 +139,7 @@ export default {
     getChatRecord() {
       this.$http.apiGetChatRecord(this.userId)
         .then(data => {
+          console.log(data)
           this.chatList = [...data]
         })
         .catch(e => {
@@ -150,15 +151,17 @@ export default {
       this.getFriendInfoById()
       this.getChatRecord()
     },
+    //新增聊天紀錄
     addChatRecords() {
       if (!this.chatText.trim()) return;
 
       let chatObj = {
-        id: "daffa",
-        text: this.chatText,
+        chatroomId: this.userId,
+        content: this.chatText.trim(),
+        date: new Date().getTime()
       };
-      this.chatList.push(chatObj);
-
+      this.$http.apiAddChatRecord(chatObj)
+      this.getChatRoomData()
       //clear
       this.chatText = "";
     },
